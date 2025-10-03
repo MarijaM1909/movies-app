@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <!-- Navigacija -->
+
     <v-app-bar app color="primary" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Movies App</v-toolbar-title>
