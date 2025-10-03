@@ -1,6 +1,6 @@
 <template>
   <v-container class="landing-container text-center my-10">
-    <h1 class="mb-4">🎬 Movies Explorer</h1>
+    <h1 class="mb-4">🎬 Filmoteka </h1>
     <p>
       Svi filmovi na jednom mjestu!
     </p>

@@ -20,16 +20,19 @@
           @keyup.enter="currentPage=1"
         />
       </v-col>
-      <v-col cols="12" sm="6" md="4">
-        <v-select
-          v-model="selectedGenre"
-          :items="genres"
-          item-title="name"
-          item-value="id"
-          label="🎭 Odaberite žanr"
-          clearable
-        />
-      </v-col>
+
+     <v-col cols="12" sm="6" md="4">
+  <v-select
+    v-model="selectedGenre"
+    :items="genres"
+    item-title="name"
+    item-value="id"
+    label="🎭 Odaberite žanr"
+    clearable
+    clear-icon="mdi-close-circle" 
+  />
+</v-col>
+
       <v-col cols="12" sm="6" md="4">
         <v-select
           v-model="sortOrder"
@@ -146,7 +149,7 @@ export default {
         { id: 16, name: "Animirani" },
       ],
       currentPage: 1,
-      itemsPerPage: 8,
+      itemsPerPage: 6,
       sortOrder: 'Najnoviji prvo',
       errorMessage: "",
       successMessage: "",
@@ -192,24 +195,33 @@ export default {
   },
   methods: {
     async fetchFilms() {
-      try {
-        const endpoint = this.searchQuery
-          ? "https://api.themoviedb.org/3/search/movie"
-          : "https://api.themoviedb.org/3/movie/popular";
+  try {
+    const pagesToFetch = 2; // koliko stranica popularnih filmova dohvatiti
+    let allFilms = [];
 
-        const response = await axios.get(endpoint, {
-          params: {
-            api_key: "f64f4f2f7581eba7f80aab57cbe4ce2d",
-            query: this.searchQuery,
-            language: "hr-HR",
-          },
-        });
-        this.films = response.data.results;
-        this.errorMessage = "";
-      } catch (err) {
-        this.errorMessage = "Greška pri dohvaćanju filmova.";
-      }
-    },
+    for (let page = 1; page <= pagesToFetch; page++) {
+      const endpoint = this.searchQuery
+        ? "https://api.themoviedb.org/3/search/movie"
+        : "https://api.themoviedb.org/3/movie/popular";
+
+      const response = await axios.get(endpoint, {
+        params: {
+          api_key: "f64f4f2f7581eba7f80aab57cbe4ce2d",
+          query: this.searchQuery,
+          language: "hr-HR",
+          page: page,
+        },
+      });
+
+      allFilms = allFilms.concat(response.data.results);
+    }
+
+    this.films = allFilms;
+    this.errorMessage = "";
+  } catch (err) {
+    this.errorMessage = "Greška pri dohvaćanju filmova.";
+  }
+},
     formatDate(date) {
       return dayjs(date).format("DD.MM.YYYY");
     },
@@ -256,3 +268,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+.v-input__icon.v-input__icon--clear {
+  color: rgb(0, 0, 0) !important;
+  font-size: 80px;
+  cursor: pointer;
+}
+</style>
