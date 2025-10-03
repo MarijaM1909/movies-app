@@ -1,7 +1,8 @@
-<template>
+<template> 
   <v-container>
     <h2 class="mb-6 text-center">🎬 Popis filmova</h2>
 
+    
     <v-alert v-if="errorMessage" type="error" dismissible class="mb-4">
       {{ errorMessage }}
     </v-alert>
@@ -9,6 +10,7 @@
       {{ successMessage }}
     </v-alert>
 
+  
     <v-row class="mb-4">
       <v-col cols="12" sm="6" md="4">
         <v-text-field
@@ -38,7 +40,7 @@
       </v-col>
     </v-row>
 
-
+   
     <v-row>
       <v-col
         v-for="film in paginatedFilms"
@@ -48,7 +50,7 @@
         md="3"
       >
         <v-card>
-         
+          
           <v-img
             :src="film.poster_path?.startsWith('data:')
                     ? film.poster_path
@@ -81,7 +83,7 @@
       />
     </v-row>
 
-   
+  
     <v-card class="mt-10 pa-6">
       <h3>➕ Dodaj novi film</h3>
 
@@ -89,7 +91,7 @@
       <v-text-field v-model="newFilm.release_date" label="Godina" />
       <v-textarea v-model="newFilm.overview" label="Opis" />
 
-      
+
       <v-file-input
         v-model="newFilm.file"
         label="Odaberite poster sa računala"
@@ -98,7 +100,6 @@
         @change="previewImage"
       />
 
-      
       <v-img
         v-if="newFilm.poster_path"
         :src="newFilm.poster_path"
@@ -238,6 +239,7 @@ export default {
     cancelEdit() {
       this.editDialog = false;
     },
+
     previewImage() {
       const file = this.newFilm.file;
       if (!file) return;

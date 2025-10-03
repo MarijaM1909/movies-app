@@ -13,13 +13,17 @@ export default createVuetify({
     themes: {
       dark: {
         colors: {
-          primary: '#1976D2', // plava
-          secondary: '#424242', // siva
-          accent: '#82B1FF',
+          background: '#0f2965ff', 
+          surface: '#002081ff',    
+          primary: '#032558ff',    
+          secondary: '#424242', 
+          accent: '#051530ff',
           error: '#FF5252',
-          info: '#2196F3',
+          info: '#0c078fff',
           success: '#4CAF50',
           warning: '#FFC107',
+          onBackground: '#FFFFFF',
+          onSurface: '#FFFFFF',
         },
       },
     },

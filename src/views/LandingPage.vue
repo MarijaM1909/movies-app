@@ -19,9 +19,9 @@ export default {
   background-image: url('https://media.istockphoto.com/id/1391013277/vector/realistic-film-stripe-wave-on-blue-background-with-place-for-text-modern-3d-isometric-film.jpg?s=612x612&w=0&k=20&c=HjOQAt6S-ZNh69WRF91LyBPEsVel3Ct0AawbPj8MQBM=');
   background-size: cover;
   background-position: center;
-  min-height: 100vh; /* pokriva cijeli ekran */
+  min-height: 100vh; 
   padding-top: 50px;
-  color: white; /* tekst bolje vidi preko pozadine */
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* dodatni kontrast */
+  color: white; 
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7); 
 }
 </style>
