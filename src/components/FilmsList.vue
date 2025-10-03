@@ -8,7 +8,7 @@
     <v-alert v-if="successMessage" type="success" dismissible class="mb-4">
       {{ successMessage }}
     </v-alert>
-<!-- za pretragu i filtriranje -->
+
     <v-row class="mb-4">
       <v-col cols="12" sm="6" md="4">
         <v-text-field
@@ -38,7 +38,7 @@
       </v-col>
     </v-row>
 
-    <!-- lista filmova -->
+
     <v-row>
       <v-col
         v-for="film in paginatedFilms"
@@ -48,7 +48,7 @@
         md="3"
       >
         <v-card>
-          <!-- 🔹 FIX za poster: radi i s DataURL i s TMDB putanjom -->
+         
           <v-img
             :src="film.poster_path?.startsWith('data:')
                     ? film.poster_path
@@ -72,7 +72,7 @@
       </v-col>
     </v-row>
 
-    <!-- paginacija -->
+   
     <v-row class="mt-6" justify="center">
       <v-pagination
         v-model="currentPage"
@@ -81,7 +81,7 @@
       />
     </v-row>
 
-    <!-- dodavanje novog filma -->
+   
     <v-card class="mt-10 pa-6">
       <h3>➕ Dodaj novi film</h3>
 
@@ -89,7 +89,7 @@
       <v-text-field v-model="newFilm.release_date" label="Godina" />
       <v-textarea v-model="newFilm.overview" label="Opis" />
 
-      <!-- dodavanje slike sa racunala -->
+      
       <v-file-input
         v-model="newFilm.file"
         label="Odaberite poster sa računala"
@@ -98,7 +98,7 @@
         @change="previewImage"
       />
 
-      <!-- pregled slike -->
+      
       <v-img
         v-if="newFilm.poster_path"
         :src="newFilm.poster_path"
